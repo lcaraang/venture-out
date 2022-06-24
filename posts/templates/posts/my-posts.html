@@ -13,6 +13,10 @@
                     <img class="card-img-top" src="{{ post.image.url }}" style="height: 12rem"
                         alt="{{ post.image.url }}">
                     <div class="card-body" style="height: 6rem">
+                        <div class="float-end">
+                            <a href="{% url 'posts:update' post.id %}"><i class="bi bi-pencil"></i></a>
+                            <a href="{% url 'posts:delete' post.id %}"><i class="bi bi-trash"></i></a>
+                        </div>
                         <p class="card-text text-truncate"><strong>{{ post.user}}</strong> {{ post.caption}}</p>
                         <p class="card-text"><small class="text-muted">{{ post.date }}</small></p>
                     </div>

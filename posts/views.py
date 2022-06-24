@@ -16,7 +16,15 @@ class HomeView(generic.ListView):
 
     def get_queryset(self):
         """Return all posts."""
-        return Post.objects.all()
+        return Post.objects.all().order_by('-date')
+
+class MyPostsView(generic.ListView):
+    template_name = 'posts/my-posts.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        """Return all posts from user."""
+        return Post.objects.filter(user=self.request.user).order_by('-date')
 
 class CreateView(generic.edit.CreateView):
     template_name = 'posts/create.html'
