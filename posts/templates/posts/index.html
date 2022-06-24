@@ -1,0 +1,13 @@
+{% if post_list %}
+    <ul>
+    {% for post in post_list %}
+
+        <li>{{ post.user }} {{ post.image.url }} {{ post.caption }} {{ post.date }}</li>
+        <a href="{% url 'posts:update' post.id %}">edit</a>
+        <a href="{% url 'posts:delete' post.id %}">delete</a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts available.</p>
+{% endif %}
+<a href="{% url 'posts:create' %}">Add New Post</a>
