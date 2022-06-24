@@ -10,19 +10,27 @@ class IndexView(generic.ListView):
         """Return all posts."""
         return Post.objects.all()
 
+class HomeView(generic.ListView):
+    template_name = 'posts/home.html'
+    context_object_name = 'post_list'
+
+    def get_queryset(self):
+        """Return all posts."""
+        return Post.objects.all()
+
 class CreateView(generic.edit.CreateView):
     template_name = 'posts/create.html'
     model = Post
     fields = ['user', 'image', 'caption']
-    success_url = reverse_lazy('posts:index')
+    success_url = reverse_lazy('posts:home')
 
 class UpdateView(generic.edit.UpdateView):
     template_name = 'posts/update.html'
     model = Post
     fields = ['user', 'image', 'caption']
-    success_url = reverse_lazy('posts:index')
+    success_url = reverse_lazy('posts:home')
 
 class DeleteView(generic.edit.DeleteView):
     template_name = 'posts/delete.html'
     model = Post
-    success_url = reverse_lazy('posts:index')
+    success_url = reverse_lazy('posts:home')
