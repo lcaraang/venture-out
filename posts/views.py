@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
@@ -20,6 +21,9 @@ class HomeView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         """Return all posts."""
         return Post.objects.all().order_by('-date')
+
+def map(request):
+    return render(request, 'posts/map.html')
 
 class MyPostsView(LoginRequiredMixin, generic.ListView):
     login_url = '/users/login/'
