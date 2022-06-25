@@ -9,9 +9,9 @@
         <div class="card-deck">
             <div class="card mt-2" style="width: 15rem">
                 <img class="card-img-top" src="{{ post.image.url }}" style="height: 12rem" alt="{{ post.image.url }}">
-                <div class="card-body" style="height: 6rem">
+                <div class="card-body" style="height: 8rem">
                     <p class="card-text text-truncate"><strong>{{ post.user}}</strong> {{ post.caption}}</p>
-                    <p class="card-text"><small class="text-muted">{{ post.date }}</small></p>
+                    <p class="card-text"><small class="text-muted">{{ post.location }} | {{ post.date }}</small></p>
                     <a href="" class="stretched-link" data-bs-toggle="modal"
                         data-bs-target="#detailModal{{ post.id }}"></a>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <p class="modal-title"><strong>{{ post.user }}</strong></p>
+                            <p class="modal-title"><strong>{{ post.user }}</strong> | {{ post.location }}</p>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">

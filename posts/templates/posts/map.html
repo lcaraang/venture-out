@@ -21,32 +21,32 @@
             <h2>Click on the map to view posts by island</h2>
             <svg viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
                 <image href="{% static 'images/state-map.png' %}" />
-                <a href="hawaii.html">
+                <a href="{% url 'posts:hawaii' %}">
                     <circle cx="1385" cy="815" r="180">
                         <title>Hawaii</title>
                     </circle>
                 </a>
-                <a href="kauai.html">
+                <a href="{% url 'posts:kauai' %}">
                     <circle cx="460" cy="210" r="65">
                         <title>Kauai</title>
                     </circle>
                 </a>
-                <a href="lanai.html">
+                <a href="{% url 'posts:lanai' %}">
                     <circle cx="1060" cy="510" r="35">
                         <title>Lanai</title>
                     </circle>
                 </a>
-                <a href="maui.html">
+                <a href="{% url 'posts:maui' %}">
                     <rect x="1120" y="465" width="170" height="110">
                         <title>Maui</title>
                     </rect>
                 </a>
-                <a href="molokai.html">
+                <a href="{% url 'posts:molokai' %}">
                     <rect x="975" y="410" width="140" height="50">
                         <title>Molokai</title>
                     </rect>
                 </a>
-                <a href="oahu.html">
+                <a href="{% url 'posts:oahu' %}">
                     <circle cx="825" cy="360" r="80">
                         <title>Oahu</title>
                     </circle>
