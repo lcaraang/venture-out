@@ -1,4 +1,10 @@
+{% extends "posts/base-form.html" %}
+
+{% block content %}
+<h2 class="card-title">Login to your account</h2>
 <form method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Login">
 </form>
+<p>Click here to <a href="{% url 'register' %}">Register</a></p>
+{% endblock %}

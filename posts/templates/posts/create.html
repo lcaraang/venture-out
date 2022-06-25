@@ -1,4 +1,9 @@
+{% extends "posts/base-form.html" %}
+
+{% block content %}
+<h2 class="card-title">Create a new post</h2>
 <form method="post" enctype="multipart/form-data">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Save">
 </form>
+{% endblock %}

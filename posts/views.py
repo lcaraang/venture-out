@@ -36,15 +36,19 @@ class CreateView(LoginRequiredMixin, generic.edit.CreateView):
     redirect_field_name = 'redirect_to'
     template_name = 'posts/create.html'
     model = Post
-    fields = ['user', 'image', 'caption']
+    fields = ['image', 'caption']
     success_url = reverse_lazy('posts:my-posts')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(CreateView, self).form_valid(form)
 
 class UpdateView(LoginRequiredMixin, generic.edit.UpdateView):
     login_url = '/users/login/'
     redirect_field_name = 'redirect_to'
     template_name = 'posts/update.html'
     model = Post
-    fields = ['user', 'image', 'caption']
+    fields = ['image', 'caption']
     success_url = reverse_lazy('posts:my-posts')
 
 class DeleteView(LoginRequiredMixin, generic.edit.DeleteView):

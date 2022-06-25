@@ -1,5 +1,10 @@
+{% extends "posts/base-form.html" %}
+
+{% block content %}
+<h2 class="card-title">Edit post</h2>
 <form method="post" enctype="multipart/form-data">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Update">
-    <a href="{% url 'posts:delete' post.id %}">delete</a>
+    <a href="{% url 'posts:delete' post.id %}">Delete</a>
 </form>
+{% endblock %}

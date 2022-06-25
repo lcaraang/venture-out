@@ -1,4 +1,9 @@
+{% extends "posts/base-form.html" %}
+
+{% block content %}
+<h2 class="card-title">Delete post</h2>
 <form method="post">{% csrf_token %}
     <p>Are you sure you want to delete this post?</p>
     <input type="submit" value="Confirm">
 </form>
+{% endblock %}
