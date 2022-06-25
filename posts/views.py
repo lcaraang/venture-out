@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Post
@@ -10,7 +11,9 @@ class IndexView(generic.ListView):
         """Return all posts."""
         return Post.objects.all()
 
-class HomeView(generic.ListView):
+class HomeView(LoginRequiredMixin, generic.ListView):
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'posts/home.html'
     context_object_name = 'post_list'
 
@@ -18,7 +21,9 @@ class HomeView(generic.ListView):
         """Return all posts."""
         return Post.objects.all().order_by('-date')
 
-class MyPostsView(generic.ListView):
+class MyPostsView(LoginRequiredMixin, generic.ListView):
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'posts/my-posts.html'
     context_object_name = 'post_list'
 
@@ -26,19 +31,25 @@ class MyPostsView(generic.ListView):
         """Return all posts from user."""
         return Post.objects.filter(user=self.request.user).order_by('-date')
 
-class CreateView(generic.edit.CreateView):
+class CreateView(LoginRequiredMixin, generic.edit.CreateView):
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'posts/create.html'
     model = Post
     fields = ['user', 'image', 'caption']
-    success_url = reverse_lazy('posts:home')
+    success_url = reverse_lazy('posts:my-posts')
 
-class UpdateView(generic.edit.UpdateView):
+class UpdateView(LoginRequiredMixin, generic.edit.UpdateView):
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'posts/update.html'
     model = Post
     fields = ['user', 'image', 'caption']
-    success_url = reverse_lazy('posts:home')
+    success_url = reverse_lazy('posts:my-posts')
 
-class DeleteView(generic.edit.DeleteView):
+class DeleteView(LoginRequiredMixin, generic.edit.DeleteView):
+    login_url = '/users/login/'
+    redirect_field_name = 'redirect_to'
     template_name = 'posts/delete.html'
     model = Post
-    success_url = reverse_lazy('posts:home')
+    success_url = reverse_lazy('posts:my-posts')
