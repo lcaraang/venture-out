@@ -2,3 +2,7 @@ svg {
     width:120vh;
     fill-opacity: 0;
 }
+
+.active, nav a:hover {
+    background-color: white;
+}

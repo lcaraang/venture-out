@@ -1,6 +1,9 @@
 {% extends "posts/base.html" %}
 
 {% block content %}
+<a href="{% url 'posts:map' %}">
+    <h5><i class="bi bi-arrow-left"></i><h5>
+</a>
 <h2>Oahu</h2>
 {% include "posts/cards.html" %}
 {% endblock %}
