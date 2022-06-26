@@ -11,7 +11,10 @@
                 <img class="card-img-top" src="{{ post.image.url }}" style="height: 12rem" alt="{{ post.image.url }}">
                 <div class="card-body" style="height: 8rem">
                     <p class="card-text text-truncate"><strong>{{ post.user}}</strong> {{ post.caption}}</p>
-                    <p class="card-text"><small class="text-muted">{{ post.location }} | {{ post.date }}</small></p>
+                    <p class="card-text"><small class="text-muted">{{ post.location }} | {{ post.date }}</small>
+                        <a href="{% url 'posts:update' post.id %}"><i class="bi bi-pencil"></i></a>
+                        <a href="{% url 'posts:delete' post.id %}"><i class="bi bi-trash"></i></a>
+                    </p>
                     <a href="" class="stretched-link" data-bs-toggle="modal"
                         data-bs-target="#detailModal{{ post.id }}"></a>
                 </div>
