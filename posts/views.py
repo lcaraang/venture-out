@@ -3,6 +3,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Post
+from django.http import JsonResponse
+from django.db.models import Count
+
+def jsondata(request):
+    data = list(Post.objects.all().values('location').annotate(count=Count('location')))
+    return JsonResponse(data, safe=False, content_type="application/json")
 
 def map(request):
     return render(request, 'posts/map.html')
