@@ -1,5 +1,5 @@
 function main() {
-    d3.json("/jsondata").then(function (data) {
+    d3.json("/api/jsondata").then(function (data) {
         d3.selectAll("text")
             .data(data, function (d) { return this.id || d.location; })
             .text(d => d.location + " (" + d.count + ")");
