@@ -106,7 +106,7 @@ class MauiFilteredView(generic.ListView):
 
 
 class MolokaiFilteredView(generic.ListView):
-    template_name = 'posts/Molokai.html'
+    template_name = 'posts/molokai.html'
     context_object_name = 'post_list'
 
     def get_queryset(self):
